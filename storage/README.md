@@ -6,7 +6,11 @@ A bracket is stored using 8 bytes. Each bit represents the result of a single ga
 
 Since brackets can be represented in many different ways, the semantics need to be clear. A bracket can be represented as a binary search tree, with the root being the result of the championship game. A `0` means the team from the left branch won and a `1` means the team from the right branch won. The left branch has the higher precedence teams and the right branch is lower precedence. The "precedence" of teams depends on the team's seed and region.
 
-The NCAA Tournament bracket is always separated into four regions, each with teams seeded 1 to 16. So there are four 1 seeds, four 2 seeds, etc. The regions must be given a precedence order, which will need to be set each year.
+The NCAA Tournament bracket is always separated into four regions, each with teams seeded 1 to 16. So there are four 1 seeds, four 2 seeds, etc. The regions must have a precedence order. The precedence order is as follows:
+  1. First region from alphabetically sorted list of regions
+  2. The region whose champion plays the champion from region 1
+  3. First region from alphabetically sorted list of two remaining regions
+  4. The remaining region
 
 ```
 P(s, r) - Precedence value of team seeded `s` from region `r`
