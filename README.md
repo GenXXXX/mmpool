@@ -8,6 +8,6 @@ This is all still a WIP (including the name). Please submit PRs + issues as need
 - [Storage](./storage/README.md)
 - [Entries](./entries/README.md)
 - Scoring
-- Rewards
+- [Rewards](./rewards/README.md)
 
 Also see the [examples](./examples) folder.
