@@ -1,9 +1,9 @@
 # Rewards (WIP)
 **Scorers** are responsible for calculating the score of each bracket and rewards for each entry. They must reach consensus with other scorers before the rewards are paid out. The smart contract is responsible for setting consensus rules and paying out rewards.
 
-- [Calculating rewards](##calculating-rewards)
-- [Rewards consensus](##rewards-consensus)
-- [Paying out Rewards](##paying-out-rewards)
+- [Calculating rewards](#calculating-rewards)
+- [Rewards consensus](#rewards-consensus)
+- [Paying out Rewards](#paying-out-rewards)
 
 ## Calculating rewards
 What is the most interesting game mechanic when there are millions or billions of brackets?
