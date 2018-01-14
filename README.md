@@ -6,7 +6,7 @@ This is all still a WIP (including the name). Please submit PRs + issues as need
 
 - Creation
 - [Storage](./storage/README.md)
-- Entries
+- [Entries](./entries/README.md)
 - Scoring
 - Rewards
 
