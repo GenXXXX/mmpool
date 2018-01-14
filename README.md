@@ -5,9 +5,9 @@ This is all still a WIP (including the name). Please submit PRs + issues as need
 ## Modules
 
 - Creation
-- [Storage](./storage/README.md)
-- [Entries](./entries/README.md)
+- [Storage](./storage)
+- [Entries](./entries)
 - Scoring
-- [Rewards](./rewards/README.md)
+- [Rewards](./rewards)
 
 Also see the [examples](./examples) folder.
