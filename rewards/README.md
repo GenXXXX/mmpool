@@ -85,5 +85,6 @@ Once consensus is reached, entrants must send a transaction to the smart contrac
  - More decentralized way of reaching consensus [TrueBit](https://truebit.io)?
  - Scorer incentive structure
  - Choose reward consensus
+ - Choose bracket count validation strategy
  - Costs
  - Reward calculation
