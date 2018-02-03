@@ -7,7 +7,7 @@ This is all still a WIP (including the name). Please submit PRs + issues as need
 - Creation
 - [Storage](./storage)
 - [Entries](./entries)
-- Scoring
+- [Scoring](./scoring)
 - [Rewards](./rewards)
 
 Also see the [examples](./examples) folder.
