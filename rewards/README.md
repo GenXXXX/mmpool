@@ -10,17 +10,17 @@ What is the most interesting game mechanic when there are millions or billions o
 
 ### Percentile Scoring
 In order to calculate the percentile of a bracket, we need to know:
-	- Total number of brackets
-	- Score of *all* brackets
+- Total number of brackets
+- Score of *all* brackets
 
 In order to calculate a function:
 
 	Rank of bracket -> Payout amount
 
 We need:
-	- Total number of brackets (N)
-	- Total prize money (P)
-	- A curve (C)
+- Total number of brackets (N)
+- Total prize money (P)
+- A curve (C)
 
 For example:
 ```
@@ -45,15 +45,15 @@ This could be calculated by just taking the sum of payouts of all brackets in an
 
 #### Ties
 Let’s say there are 100 brackets. 1 is in first and the rest are tied.
-	- Tied brackets are all “tied for last” and receive nothing
-		- Not all rewards are paid out
-	- Tied brackets are all “tied for second” and all receive second place reward
-		- Too much rewards are paid
-	- Tied brackets are all “tied for second” and split the second place reward
-		- Function above is not compatible
-		- After applying function, check for ties and divide
-	- Use a tiebreaker that will always settle ties
-		- Submission time? Block? Final score? Coin flip? Least number of brackets in entry?
+- Tied brackets are all “tied for last” and receive nothing
+	- Not all rewards are paid out
+- Tied brackets are all “tied for second” and all receive second place reward
+	- Too much rewards are paid
+- Tied brackets are all “tied for second” and split the second place reward
+	- Function above is not compatible
+	- After applying function, check for ties and divide
+- Use a tiebreaker that will always settle ties
+	- Submission time? Block? Final score? Coin flip? Least number of brackets in entry?
 
 
 ## Rewards consensus
