@@ -55,6 +55,16 @@ Let’s say there are 100 brackets. 1 is in first and the rest are tied.
 - Use a tiebreaker that will always settle ties
 	- Submission time? Block? Final score? Coin flip? Least number of brackets in entry?
 
+### Validating Bracket Count
+The smart contract cannot validate if the number of brackets in the entry is correct. **Scorers** must do this. What happens if the number of brackets is invalid?
+- If too low
+	- Consider the entire entry invalid
+	- Only score the first specified number of brackets
+- If too high
+	- Consider the entire entry invalid
+	- Score all brackets
+
+Should the error ever be refunded?
 
 ## Rewards consensus
 Assuming a scorer has calculated the rewards for each entry, they now need to reach consensus with other scorers. There are a few ways this can be done.
