@@ -3,7 +3,7 @@ from bitstream import BitStream
 
 results = np.fromfile('../../examples/2017_results.bin', dtype=np.uint64)[0]
 
-ROUND_SCORES = [np.uint8(8), np.uint8(5), np.uint8(3), np.uint8(2), np.uint8(1), np.uint8(1)]
+ROUND_SCORES = [np.uint8(21), np.uint8(13), np.uint8(8), np.uint8(5), np.uint8(3), np.uint8(2)]
 MASKS = [dict(), dict(), dict(), dict(), dict(), dict(), dict()]
 
 def calculateMask(rnd, game):
@@ -43,4 +43,4 @@ def scoreEntry(filename):
         total_score += score
     print(total_score/len(brackets))
 
-scoreEntry('../../examples/100000_brackets.bin')
+scoreEntry('../../examples/100_brackets.bin')
