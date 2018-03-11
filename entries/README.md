@@ -12,7 +12,9 @@ An entry is submitted by sending a transaction to the smart contract with an IPF
 
 The smart contract saves the pairing of the `Ethereum account, entry hash, number of brackets` to the blockchain. The blockchain can be used as a proof of entry time.
 
-Entries can be submitted and resubmitted up until the tournament start time. Users must pay the transaction fee for each submission, so they are incentivized to submit their entry once and from a single account.
+Entries can only be submitted once for each Ethereum account and must be submitted at least an hour before the start of the first game.
+
+The current implementation can be found at [eth-mmpool](https://github.com/codynhat/eth-mmpool).
 
 ## Entry fees
 Along with all the costs from all modules that need to be paid at entry submission time, there is also the actual *entry fee* that goes towards the reward pool that must also be paid at submission time.
@@ -22,5 +24,5 @@ There is a fee associated with each bracket. However, the smart contract does no
 ## TODO
   - Smart contract implementation
   - Processing costs
-  - Storage structure
   - Alternative entry protocol? Not using smart contracts?
+  - Resubmit entries
