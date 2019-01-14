@@ -8,54 +8,80 @@
 ## Calculating rewards
 What is the most interesting game mechanic when there are millions or billions of brackets?
 
-### Percentile Scoring
-In order to calculate the percentile of a bracket, we need to know:
-- Total number of brackets
-- Score of *all* brackets
+### Max of Entry
+e = # of entries
+b = # of brackets
 
-In order to calculate a function:
-
-	Rank of bracket -> Payout amount
-
-We need:
-- Total number of brackets (N)
-- Total prize money (P)
-- A curve (C)
-
-For example:
 ```
-C = x^3
-P = 100
-N = 100
+max_bracket_by_entry = {}												# space O(e)
+for e in entries 														# time O(e)
+	max_bracket_by_entry[e] = max_score(e)
+end
 
-# f is percentage of prize money for given rank (x)
-f(x) = (x-(0.9*N))^3
-f(x) = (x-90)^3
+rewards = {}															# space O(e)
 
-S = sum f(x) x=90 to 100
-
-# h is prize money for given rank (x)
-h(x) = (f(x) / S) * P
+rank = 1
+while reward = calculate_reward(rank), reward >= 1 wei 				# time O(b)
+	e = entry with best bracket
+	rewards[e] += reward
+	max_bracket_by_entry[e] = max_score(e - best bracket)
+	rank++
+end
 ```
 
-#### Payout per entry
-The payout that the smart contract needs to know is **payout per entry, not per bracket.**
+## calculate_reward
+Each rank gets a percentage `p` of the remaining pot. For example, if `p = 0.1`
+```
+for rank x
+f is percentage of total pot
+f(x) = p*(1.0-p)^x
 
-This could be calculated by just taking the sum of payouts of all brackets in an entry. Or entries can be ranked and the function is applied for entries and not brackets. This may change payouts if people submit more than one entry. Paying out per bracket means it doesn’t matter how many entries someone submits. Also, someone who submits only one bracket that ends up being the best could potentially not win anything if other people have lots of brackets. Maybe rank by average bracket score?
 
-#### Ties
+rank 1 -> 0.1
+rank 2 -> 0.09
+rank 3 -> 0.081
+```
+
+The difficult part is calculating `p`. It cannot be constant and still work with different amount of total brackets. It must correlate with the number of brackets.
+```
+N = total number of brackets
+
+e = log_10(N)
+p = 10^(2-e)
+```
+
+This works out to approximately
+	* Top 5% of brackets break even
+	* Top 25% of brackets get some reward
+	* Top bracket gets ~100x entry fee
+
+### Ties (WIP)
 Let’s say there are 100 brackets. 1 is in first and the rest are tied.
 - Tied brackets are all “tied for last” and receive nothing
 	- Not all rewards are paid out
 - Tied brackets are all “tied for second” and all receive second place reward
 	- Too much rewards are paid
 - Tied brackets are all “tied for second” and split the second place reward
-	- Function above is not compatible
-	- After applying function, check for ties and divide
 - Use a tiebreaker that will always settle ties
 	- Submission time? Block? Final score? Coin flip? Least number of brackets in entry?
 
-### Validating Bracket Count
+What if brackets within an entry are tied?
+- Submission time and block tiebreakers don't work
+- Final score requires more storage
+
+Tiebreaker
+- Total correct games
+- Wins by round
+	- Championship
+	- Final Four
+	- Elite Eight
+	- Sweet Sixteen
+	- Round of 32
+	- Round of 64
+- Submission block number
+- Coin flip with last entry block as seed
+
+### Validating Bracket Count (WIP)
 The smart contract cannot validate if the number of brackets in the entry is correct. **Scorers** must do this. What happens if the number of brackets is invalid?
 - If too low
 	- Consider the entire entry invalid
