@@ -70,16 +70,8 @@ What if brackets within an entry are tied?
 - Final score requires more storage
 
 Tiebreaker
-- Total correct games
-- Wins by round
-	- Championship
-	- Final Four
-	- Elite Eight
-	- Sweet Sixteen
-	- Round of 32
-	- Round of 64
 - Submission block number
-- Coin flip with last entry block as seed
+- String comparison of entry cid hash
 
 ### Validating Bracket Count (WIP)
 The smart contract cannot validate if the number of brackets in the entry is correct. **Scorers** must do this. What happens if the number of brackets is invalid?
